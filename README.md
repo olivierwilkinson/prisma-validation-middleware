@@ -33,6 +33,8 @@
   - [Usage with Zod](#usage-with-zod)
   - [Usage with Superstruct](#usage-with-superstruct)
 - [Behavior](#behavior)
+  - [Validated Operations](#validated-operations)
+  - [Error Messages](#error-messages)
 - [LICENSE](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -190,7 +192,7 @@ client.$use(
 
 ## Behavior
 
-### Validated Operations
+### Validated Operations
 
 Data is validated for `create`, `update`, `upsert`, `createMany`, `updateMany` and `connectOrCreate` operations. This
 includes when models are created or updated through nested relations. For example all the Comment data below would be
@@ -214,7 +216,7 @@ await client.post.update({
 });
 ```
 
-### Error Messages
+### Error Messages
 
 The error thrown by the middleware is the error thrown by the validation function prefixed with information about the
 model and action that failed.
