@@ -31,7 +31,7 @@ describe("create", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.create: email must include @`
+      `User.create: email must include @`
     );
   });
 
@@ -75,7 +75,7 @@ describe("create", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.create: email must include @`
+      `User.create: email must include @`
     );
   });
 
@@ -121,7 +121,7 @@ describe("create", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.create: email must include @`
+      `User.create: email must include @`
     );
   });
 });

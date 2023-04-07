@@ -33,7 +33,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.update: email must include @`
+      `User.update: email must include @`
     );
   });
 
@@ -79,7 +79,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.update: email must include @`
+      `User.update: email must include @`
     );
   });
 
@@ -123,7 +123,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.update: email must include @`
+      `User.update: email must include @`
     );
   });
 });

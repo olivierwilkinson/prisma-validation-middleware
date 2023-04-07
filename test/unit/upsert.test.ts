@@ -42,7 +42,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.upsert: email must include @`
+      `User.upsert: email must include @`
     );
 
     // validates create
@@ -59,7 +59,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.upsert: email must include @`
+      `User.upsert: email must include @`
     );
   });
 
@@ -113,7 +113,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.upsert: email must include @`
+      `User.upsert: email must include @`
     );
 
     await expect(
@@ -136,7 +136,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.upsert: email must include @`
+      `User.upsert: email must include @`
     );
   });
 
@@ -189,7 +189,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.upsert: email must include @`
+      `User.upsert: email must include @`
     );
 
     // validates create
@@ -212,7 +212,7 @@ describe("update", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.upsert: email must include @`
+      `User.upsert: email must include @`
     );
   });
 });

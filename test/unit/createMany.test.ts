@@ -31,7 +31,7 @@ describe("createMany", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.createMany: email must include @`
+      `User.createMany: email must include @`
     );
   });
 
@@ -90,7 +90,7 @@ describe("createMany", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.createMany: email must include @`
+      `User.createMany: email must include @`
     );
 
     // validates second item
@@ -118,7 +118,7 @@ describe("createMany", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.createMany: email must include @`
+      `User.createMany: email must include @`
     );
   });
 });

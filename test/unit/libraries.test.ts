@@ -40,7 +40,7 @@ describe("libraries", () => {
         next
       )
     ).rejects.toThrowError(
-      "Validation error at User.update: At path: email -- Expected a string with a length between `10` and `128` but received one with a length of `4`"
+      "User.update: At path: email -- Expected a string with a length between `10` and `128` but received one with a length of `4`"
     );
   });
 
@@ -83,7 +83,7 @@ describe("libraries", () => {
         next
       )
     ).rejects.toThrowError(
-      'Validation error at User.update: String must contain at least 10 character(s) at "email"'
+      'User.update: String must contain at least 10 character(s) at "email"'
     );
   });
 });

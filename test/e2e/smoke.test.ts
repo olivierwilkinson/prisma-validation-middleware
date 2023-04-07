@@ -79,7 +79,7 @@ describe("smoke", () => {
         },
       })
     ).rejects.toThrowError(
-      `Validation error at User.create: email must include @`
+      `User.create: email must include @`
     );
 
     expect(
@@ -105,7 +105,7 @@ describe("smoke", () => {
         },
       })
     ).rejects.toThrowError(
-      `Validation error at User.update: email must include @`
+      `User.update: email must include @`
     );
 
     expect(

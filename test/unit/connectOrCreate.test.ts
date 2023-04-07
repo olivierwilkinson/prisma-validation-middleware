@@ -53,7 +53,7 @@ describe("connectOrCreate", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.connectOrCreate: email must include @`
+      `User.connectOrCreate: email must include @`
     );
   });
 
@@ -105,7 +105,7 @@ describe("connectOrCreate", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.connectOrCreate: email must include @`
+      `User.connectOrCreate: email must include @`
     );
   });
 });

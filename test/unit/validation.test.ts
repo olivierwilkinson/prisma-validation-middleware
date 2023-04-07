@@ -37,7 +37,7 @@ describe("validation", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.create: email must include @`
+      `User.create: email must include @`
     );
   });
 
@@ -77,7 +77,7 @@ describe("validation", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.create: email must include @`
+      `User.create: email must include @`
     );
 
     // validates incorrect name on another operation
@@ -92,7 +92,7 @@ describe("validation", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.create: name must include test`
+      `User.create: name must include test`
     );
 
     // validates both when they are incorrect
@@ -107,7 +107,7 @@ describe("validation", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.create: email must include @`
+      `User.create: email must include @`
     );
   });
 
@@ -159,7 +159,7 @@ describe("validation", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at Comment.create: content must include test`
+      `Comment.create: content must include test`
     );
 
     // validates incorrect content on another operation
@@ -179,7 +179,7 @@ describe("validation", () => {
         next
       )
     ).rejects.toThrowError(
-      `Validation error at User.create: email must include @`
+      `User.create: email must include @`
     );
   });
 });

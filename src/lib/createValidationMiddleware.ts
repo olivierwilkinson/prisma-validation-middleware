@@ -3,7 +3,8 @@ import { createNestedMiddleware } from "prisma-nested-middleware";
 import { Options, Validators } from "./types";
 
 const defaultCustomizeError: Options["customizeError"] = (error, params) => {
-  error.message = `Validation error at ${params.model}.${params.action}: ${error.message}`;
+  error.name = "ValidationError";
+  error.message = `${params.model}.${params.action}: ${error.message}`;
   return error;
 };
 
