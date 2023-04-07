@@ -34,7 +34,6 @@
   - [Usage with Superstruct](#usage-with-superstruct)
 - [Behavior](#behavior)
   - [Validated Operations](#validated-operations)
-  - [Error Messages](#error-messages)
 - [LICENSE](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -83,6 +82,34 @@ client.$use(
 
 You can pass a validation function for each model you want to validate. If you don't pass a validation function for a
 model then no validation will be performed for it.
+
+The error thrown by a validation function is modified before being rethrown: the name is updated to be "ValidationError"
+and the message is prefixed with information about the model and action that failed validation. To customize the error
+you can pass an options object with a `customizeError` function as the second argument of `createValidationMiddleware`:
+
+```typescript
+client.$use(
+  createValidationMiddleware(
+    {
+      Comment: (data) => {
+        if (data.content?.length > 1000) {
+          throw new Error("content must be less than 1000 characters");
+        }
+      },
+    },
+    {
+      customizeError: (error, params) => {
+        error.name = "CustomErrorName";
+        error.message = `Custom message for ${params.model}.${params.action}: ${error.message}`;
+        return error;
+      },
+    }
+  )
+);
+```
+
+The `customizeError` function takes the error thrown by the validation function as the first argument and the params of
+the operation that failed as the second argument. The params are `NestedParams` from [prisma-nested-middleware](https://github.com/olivierwilkinson/prisma-nested-middleware). The customized error must be returned.
 
 ### Usage with Zod
 
@@ -215,11 +242,6 @@ await client.post.update({
   },
 });
 ```
-
-### Error Messages
-
-The error thrown by the middleware is the error thrown by the validation function prefixed with information about the
-model and action that failed.
 
 ## LICENSE
 
