@@ -1,14 +1,22 @@
 import { Prisma } from "@prisma/client";
 import { createNestedMiddleware } from "prisma-nested-middleware";
-import { Config } from "./types";
+import { Options, Validators } from "./types";
+
+const defaultCustomizeError: Options["customizeError"] = (error, params) => {
+  error.message = `Validation error at ${params.model}.${params.action}: ${error.message}`;
+  return error;
+};
 
 export const createValidationMiddleware = (
-  config: Config
+  validators: Validators,
+  options: Partial<Options> = {}
 ): Prisma.Middleware => {
+  const { customizeError = defaultCustomizeError } = options;
+
   return createNestedMiddleware((params, next) => {
     if (!params.model) return next(params);
 
-    const validator = config[params.model];
+    const validator = validators[params.model];
     if (!validator) return next(params);
 
     try {
@@ -60,9 +68,7 @@ export const createValidationMiddleware = (
           break;
       }
     } catch (e) {
-      const error = e as Error;
-      error.message = `Validation error at ${params.model}.${params.action}: ${error.message}`;
-      throw error;
+      throw customizeError(e as Error, params);
     }
 
     return next(params);
